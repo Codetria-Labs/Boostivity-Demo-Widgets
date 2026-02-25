@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suprabond - Uniendo tus proyectos</title>
+    <!-- Tailwind CSS desde CDN para un diseño rápido y moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Personalizando los colores corporativos (aproximación a Suprabond: Rojo intenso) */
+        script {
+            display: none;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        suprabondRed: '#DA291C',
+                        suprabondDark: '#1E293B',
+                        suprabondLight: '#F8FAFC'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-suprabondLight text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Navegación -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <!-- Logo simulado -->
+                    <div
+                        class="bg-suprabondRed text-white font-extrabold text-2xl tracking-tighter px-3 py-1 italic rounded-sm shadow-sm">
+                        SUPRABOND
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#"
+                        class="text-gray-700 hover:text-suprabondRed font-semibold transition-colors duration-200">Productos</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-suprabondRed font-semibold transition-colors duration-200">Soluciones</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-suprabondRed font-semibold transition-colors duration-200">Nosotros</a>
+                    <a href="#"
+                        class="text-gray-700 hover:text-suprabondRed font-semibold transition-colors duration-200">Contacto</a>
+                </div>
+                <!-- Botón Menu Mobile -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-700 hover:text-suprabondRed focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="flex-grow">
+        <div class="relative bg-suprabondDark text-white overflow-hidden">
+            <!-- Background Decoration -->
+            <div
+                class="absolute inset-0 z-0 opacity-20 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-suprabondRed via-suprabondDark to-suprabondDark">
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+                <div class="md:w-2/3">
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                        La fuerza que une <br>
+                        <span class="text-suprabondRed">tus mejores ideas.</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl">
+                        Adhesivos, selladores y herramientas profesionales para la industria, el hogar y la
+                        construcción. Calidad garantizada desde hace más de 60 años.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#catálogo"
+                            class="bg-suprabondRed hover:bg-red-700 text-white font-bold py-3 px-8 rounded-md text-center transition duration-300 shadow-lg shadow-red-500/30">
+                            Ver Catálogo
+                        </a>
+                        <a href="#asesoramiento"
+                            class="bg-transparent border-2 border-white hover:bg-white hover:text-suprabondDark text-white font-bold py-3 px-8 rounded-md text-center transition duration-300">
+                            Asesoramiento Técnico
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categorías de Productos -->
+        <div class="py-20 bg-suprabondLight" id="catálogo">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-extrabold text-suprabondDark sm:text-4xl">Nuestras Soluciones</h2>
+                    <div class="mt-2 h-1 w-24 bg-suprabondRed mx-auto rounded"></div>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                        Encuentra el producto perfecto para cada necesidad específica.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Tarjeta 1 -->
+                    <div
+                        class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 group">
+                        <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center p-6">
+                            <div class="text-6xl group-hover:scale-110 transition-transform duration-300">🧴</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-suprabondDark mb-2">Adhesivos Instantáneos</h3>
+                            <p class="text-gray-600 mb-4">Pegamento de cianoacrilato de máxima resistencia para
+                                reparaciones rápidas.</p>
+                            <a href="#" class="text-suprabondRed font-semibold hover:underline">Ver productos &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2 -->
+                    <div
+                        class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 group">
+                        <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center p-6">
+                            <div class="text-6xl group-hover:scale-110 transition-transform duration-300">🏢</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-suprabondDark mb-2">Selladores para Construcción</h3>
+                            <p class="text-gray-600 mb-4">Siliconas, poliuretanos y acrílicos para juntas de dilatación
+                                y aberturas.</p>
+                            <a href="#" class="text-suprabondRed font-semibold hover:underline">Ver productos &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3 -->
+                    <div
+                        class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 group">
+                        <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center p-6">
+                            <div class="text-6xl group-hover:scale-110 transition-transform duration-300">🧻</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-suprabondDark mb-2">Cintas Adhesivas</h3>
+                            <p class="text-gray-600 mb-4">Cintas de embalaje, doble faz, de papel y aislantes para uso
+                                general y profesional.</p>
+                            <a href="#" class="text-suprabondRed font-semibold hover:underline">Ver productos &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 4 -->
+                    <div
+                        class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 group">
+                        <div class="h-48 bg-gray-200 overflow-hidden flex items-center justify-center p-6">
+                            <div class="text-6xl group-hover:scale-110 transition-transform duration-300">🔨</div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-suprabondDark mb-2">Pistolas y Herramientas</h3>
+                            <p class="text-gray-600 mb-4">Pistolas aplicadoras, fundidoras de silicona caliente y
+                                accesorios.</p>
+                            <a href="#" class="text-suprabondRed font-semibold hover:underline">Ver productos &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action / Soporte -->
+        <div class="bg-white border-t border-gray-200">
+            <div
+                class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8 lg:flex lg:items-center lg:justify-between">
+                <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    <span class="block">¿Dudas sobre qué producto usar?</span>
+                    <span class="block text-suprabondRed">Nuestro asistente inteligente te ayuda.</span>
+                </h2>
+                <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                    <p class="text-gray-500 text-lg max-w-md">
+                        Haz clic en la burbuja de chat en la esquina inferior derecha para recibir asistencia inmediata
+                        sobre tiempos de curado, materiales compatibles y rendimiento.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-suprabondDark text-gray-300 py-12 border-t font-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <div class="text-white font-extrabold text-xl tracking-tighter italic mb-4">SUPRABOND</div>
+                <p class="text-sm">Líderes en soluciones adhesivas para la industria y el hogar en todo el país.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Productos</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white transition">Profesionales</a></li>
+                    <li><a href="#" class="hover:text-white transition">Hogar y Escolares</a></li>
+                    <li><a href="#" class="hover:text-white transition">Ferretería</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Soporte</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white transition">Hojas de Seguridad</a></li>
+                    <li><a href="#" class="hover:text-white transition">Fichas Técnicas</a></li>
+                    <li><a href="#" class="hover:text-white transition">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Contacto</h4>
+                <p class="text-sm mb-2">contacto@suprabond.ejemplo</p>
+                <p class="text-sm">+54 11 1234-5678</p>
+                <div class="mt-4 flex space-x-4">
+                    <!-- Redes Sociales Simuladas -->
+                    <div
+                        class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-suprabondRed cursor-pointer transition">
+                        in</div>
+                    <div
+                        class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-suprabondRed cursor-pointer transition">
+                        fb</div>
+                    <div
+                        class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center hover:bg-suprabondRed cursor-pointer transition">
+                        ig</div>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-8 pt-8 border-t border-gray-700 text-sm text-center">
+            &copy; 2026 Suprabond Example Demo. Sitio de prueba para Boostivity Widget.
+        </div>
+    </footer>
+
+    <!-- WIDGET DE BOOSTIVITY (Copiado del index.html original) -->
+    <script src="https://cdn.boostivity.ai/widget.js"
+        data-widget-key="wk_xSUFi17uxKBOw78eUDxMHHbveHuDa5egthufEJsBJDg"></script>
+
+</body>
+
+</html>
