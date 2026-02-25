@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget Static Demo — Boostivity</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        /* ── Navigation ── */
+        nav {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        nav .logo span {
+            color: #14b8a6;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav .nav-links a {
+            text-decoration: none;
+            color: #64748b;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav .nav-links a:hover {
+            color: #0f172a;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            padding: 80px 32px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #14b8a6, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        /* ── Instructions Panel ── */
+        .instructions-panel {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #14b8a6;
+            border-radius: 8px;
+            padding: 24px;
+            max-width: 800px;
+            margin: -32px auto 48px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        .instructions-panel h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .instructions-panel p {
+            color: #475569;
+            font-size: 14px;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .instructions-panel code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #ef4444;
+        }
+
+        /* ── Features ── */
+        .features {
+            padding: 32px 32px 64px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 48px;
+            color: #0f172a;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #14b8a620, #10b98120);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: #0f172a;
+            color: #64748b;
+            padding: 32px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #14b8a6;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">MiTienda<span>Online</span></div>
+        <div class="nav-links">
+            <a href="#features">Productos</a>
+            <a href="#about">Nosotros</a>
+            <a href="#contact">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>Tu sitio web de <span>Prueba</span></h1>
+        <p>
+            Esta es una página estática para simular cómo se vería el widget
+            instalado en una página real de tus clientes.
+        </p>
+    </div>
+
+    <!-- Instructions Panel -->
+    <div class="instructions-panel">
+        <h3>ℹ️ Cómo probar el widget aquí</h3>
+        <p>
+            1. Entrá al panel de Admin de Boostivity en <b>Integrations &gt; Widget</b>.<br>
+            2. Copiá el <strong>código HTML (Snippet)</strong> que aparece ahí.<br>
+            3. Abrí este archivo (<code>Boostivity-Widget/demo.html</code>) en tu editor de código.<br>
+            4. Pegá el código justo antes del cierre de la etiqueta <code>&lt;/body&gt;</code> abajo de este
+            archivo.<br>
+            5. Entrá a <code>http://localhost:9090/demo.html</code> y debería aparecer el bot.
+        </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="features" id="features">
+        <h2>Catálogo de prueba</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">👟</div>
+                <h3>Zapatillas</h3>
+                <p>Nuestra nueva colección de calzado deportivo.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👕</div>
+                <h3>Indumentaria</h3>
+                <p>Ropa para entrenar con tecnología de secado rápido.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎒</div>
+                <h3>Accesorios</h3>
+                <p>Mochilas y bolsos para llevar todo el equipamiento.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 MiTiendaOnline. Sitio web de demostración estática.</p>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- 👇 PEGÁ EL SCRIPT DEL WIDGET JUSTO ACÁ 👇 -->
+    <!-- ========================================== -->
+    <script src="https://cdn.boostivity.com/widget.js"
+        data-widget-key="wk_xSUFi17uxKBOw78eUDxMHHbveHuDa5egthufEJsBJDg"></script>
+
+</body>
+
+</html>
