@@ -9,18 +9,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
+                        sbYellow: '#FFD200',
+                        sbYellowDark: '#E6BD00',
                         sbRed: '#E30613',
-                        sbRedDark: '#B8050F',
+                        sbBlue: '#1FA1D4',
                         sbDark: '#1A1A1A',
-                        sbGray: '#F4F4F4',
+                        sbGray: '#F5F5F5',
                         sbBorder: '#E5E5E5',
-                        sbText: '#2B2B2B',
+                        sbText: '#1F1F1F',
                         sbMuted: '#6B6B6B'
                     },
                     fontFamily: {
@@ -32,46 +34,38 @@
     </script>
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .product-img-placeholder {
-            background-image: linear-gradient(135deg, #ffffff 0%, #f4f4f4 100%);
-            position: relative;
+        .product-img-bg {
+            background: #FFFFFF;
         }
-        .product-img-placeholder::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 50% 60%, rgba(227,6,19,0.04) 0%, transparent 60%);
-        }
-        .marquee-track {
-            animation: marquee 28s linear infinite;
-        }
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-        .hero-grad {
-            background: linear-gradient(115deg, #1A1A1A 0%, #2a0608 55%, #E30613 130%);
-        }
-        .badge-new {
-            background: #E30613;
-        }
-        .badge-sale {
-            background: #1A1A1A;
-        }
-        details > summary { list-style: none; cursor: pointer; }
-        details > summary::-webkit-details-marker { display: none; }
+        .price-strike { text-decoration: line-through; color: #9a9a9a; }
+        .nav-link { position: relative; }
         .nav-link::after {
             content: '';
             display: block;
             height: 2px;
             width: 0;
-            background: #E30613;
+            background: #1A1A1A;
             transition: width .25s ease;
             margin-top: 4px;
         }
         .nav-link:hover::after { width: 100%; }
-        .price-strike { text-decoration: line-through; color: #9a9a9a; }
-        .scroll-shadow::-webkit-scrollbar { display: none; }
+        .yellow-dot::after {
+            content: '.';
+            color: #E30613;
+        }
+        .tube-mock {
+            background: linear-gradient(135deg, #FFD200 0%, #FFD200 60%, #E30613 60%, #E30613 100%);
+            position: relative;
+            border-radius: 4px 60% 60% 4px / 4px 50% 50% 4px;
+        }
+        .tube-mock::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 50%; transform: translateY(-50%);
+            width: 14px; height: 60%;
+            background: #1A1A1A;
+            border-radius: 2px 0 0 2px;
+        }
     </style>
 </head>
 
@@ -79,19 +73,19 @@
 
     <!-- ============ TOP BAR ============ -->
     <div class="bg-sbDark text-white text-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-9">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center md:justify-between h-9">
             <div class="hidden md:flex items-center gap-5">
-                <a href="tel:1160538288" class="flex items-center gap-1.5 hover:text-sbRed transition">
+                <a href="tel:1160538288" class="flex items-center gap-1.5 hover:text-sbYellow transition">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-1.7.86a11 11 0 005.52 5.52l.86-1.7a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg>
                     11 6053-8288
                 </a>
-                <a href="mailto:tienda@suprabond.com.ar" class="flex items-center gap-1.5 hover:text-sbRed transition">
+                <a href="mailto:tienda@suprabond.com.ar" class="flex items-center gap-1.5 hover:text-sbYellow transition">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                     tienda@suprabond.com.ar
                 </a>
             </div>
-            <div class="flex-1 md:flex-none text-center md:text-right font-medium">
-                ¡Llevá tu compra con <span class="text-sbRed font-bold">ENVÍO GRATIS</span>! <a href="#" class="underline hover:text-sbRed">Ver términos y condiciones</a>
+            <div class="font-semibold">
+                ¡Llevá tu compra con <span class="text-sbYellow font-extrabold">ENVÍO GRATIS</span>! <a href="#" class="underline hover:text-sbYellow">Ver términos y condiciones.</a>
             </div>
         </div>
     </div>
@@ -100,35 +94,40 @@
     <header class="bg-white border-b border-sbBorder sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20 gap-6">
-                <!-- Logo -->
                 <a href="#" class="flex-shrink-0">
                     <img src="https://tienda.suprabond.com/cdn/shop/files/SBD_logotipo_140x@2x.png?v=1768840194"
                          alt="Suprabond" class="h-9 md:h-10 w-auto">
                 </a>
 
                 <!-- Search -->
-                <div class="hidden md:flex flex-1 max-w-xl">
-                    <div class="relative w-full">
-                        <input type="text" placeholder="Buscar productos..."
-                               class="w-full border border-sbBorder rounded-full py-2.5 pl-5 pr-12 text-sm focus:outline-none focus:border-sbRed transition">
-                        <button class="absolute right-1 top-1/2 -translate-y-1/2 bg-sbRed hover:bg-sbRedDark text-white rounded-full w-9 h-9 flex items-center justify-center transition">
+                <div class="hidden md:flex flex-1 max-w-2xl">
+                    <div class="relative w-full flex items-stretch border border-sbBorder rounded overflow-hidden focus-within:border-sbDark transition">
+                        <input type="text" placeholder="Buscar..."
+                               class="flex-1 py-2.5 px-4 text-sm focus:outline-none">
+                        <div class="border-l border-sbBorder flex items-center px-3 text-sm text-sbMuted gap-1 cursor-pointer hover:bg-sbGray transition">
+                            Todas las categorías
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                        </div>
+                        <button class="bg-sbDark hover:bg-black text-white px-5 flex items-center justify-center transition">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                         </button>
                     </div>
                 </div>
 
-                <!-- Icons -->
-                <div class="flex items-center gap-2 md:gap-5">
-                    <a href="#" class="hidden md:flex items-center gap-2 text-sm font-medium text-sbText hover:text-sbRed transition">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                        <span class="hidden lg:inline">Mi cuenta</span>
-                    </a>
-                    <a href="#" class="relative flex items-center gap-2 text-sm font-medium text-sbText hover:text-sbRed transition">
-                        <div class="relative">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                            <span class="absolute -top-2 -right-2 bg-sbRed text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                <div class="flex items-center gap-5">
+                    <a href="#" class="hidden md:flex items-center gap-2 text-sm text-sbText hover:text-sbDark transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        <div class="leading-tight">
+                            <p class="text-xs text-sbMuted">Iniciar sesión</p>
+                            <p class="font-bold text-sm">Mi cuenta</p>
                         </div>
-                        <span class="hidden lg:inline">Carrito</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-2 text-sm text-sbText hover:text-sbDark transition">
+                        <div class="relative">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            <span class="absolute -top-1.5 -right-1.5 bg-sbDark text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                        </div>
+                        <span class="font-bold text-sm hidden lg:inline">Carrito</span>
                     </a>
                     <button class="md:hidden text-sbText" aria-label="Menú">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -138,10 +137,9 @@
 
             <!-- Mobile search -->
             <div class="md:hidden pb-3">
-                <div class="relative w-full">
-                    <input type="text" placeholder="Buscar productos..."
-                           class="w-full border border-sbBorder rounded-full py-2 pl-4 pr-11 text-sm focus:outline-none focus:border-sbRed">
-                    <button class="absolute right-1 top-1/2 -translate-y-1/2 bg-sbRed text-white rounded-full w-8 h-8 flex items-center justify-center">
+                <div class="relative w-full flex items-stretch border border-sbBorder rounded overflow-hidden">
+                    <input type="text" placeholder="Buscar..." class="flex-1 py-2 px-3 text-sm focus:outline-none">
+                    <button class="bg-sbDark text-white px-4 flex items-center justify-center">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </button>
                 </div>
@@ -151,556 +149,716 @@
         <!-- Main Nav -->
         <nav class="border-t border-sbBorder bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <ul class="hidden md:flex items-center justify-center gap-10 h-12 text-sm font-semibold uppercase tracking-wide">
+                <ul class="hidden md:flex items-center gap-10 h-12 text-sm font-semibold">
                     <li class="relative group">
-                        <a href="#" class="nav-link flex items-center gap-1 text-sbText hover:text-sbRed transition">
+                        <a href="#" class="nav-link flex items-center gap-1 text-sbText hover:text-sbDark transition">
                             Categorías
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
                         </a>
-                        <div class="absolute left-1/2 -translate-x-1/2 top-full mt-0 w-64 bg-white border border-sbBorder shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                            <a href="#" class="block px-5 py-3 text-xs font-medium normal-case hover:bg-sbGray hover:text-sbRed">Selladores y Adhesivos</a>
-                            <a href="#" class="block px-5 py-3 text-xs font-medium normal-case hover:bg-sbGray hover:text-sbRed">Accesorios para el Hogar</a>
-                            <a href="#" class="block px-5 py-3 text-xs font-medium normal-case hover:bg-sbGray hover:text-sbRed">Candados y Seguridad</a>
-                            <a href="#" class="block px-5 py-3 text-xs font-medium normal-case hover:bg-sbGray hover:text-sbRed">Herramientas y Accesorios</a>
-                            <a href="#" class="block px-5 py-3 text-xs font-medium normal-case hover:bg-sbGray hover:text-sbRed">Aire Libre</a>
-                            <a href="#" class="block px-5 py-3 text-xs font-medium normal-case hover:bg-sbGray hover:text-sbRed">Autos, Motos y Bicicletas</a>
-                            <a href="#" class="block px-5 py-3 text-xs font-medium normal-case hover:bg-sbGray hover:text-sbRed">Construcción e Impermeabilización</a>
+                        <div class="absolute left-0 top-full mt-0 w-72 bg-white border border-sbBorder shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <a href="#" class="block px-5 py-3 text-sm hover:bg-sbGray hover:text-sbDark border-b border-sbBorder">Selladores y Adhesivos</a>
+                            <a href="#" class="block px-5 py-3 text-sm hover:bg-sbGray hover:text-sbDark border-b border-sbBorder">Accesorios para el Hogar</a>
+                            <a href="#" class="block px-5 py-3 text-sm hover:bg-sbGray hover:text-sbDark border-b border-sbBorder">Candados y Seguridad</a>
+                            <a href="#" class="block px-5 py-3 text-sm hover:bg-sbGray hover:text-sbDark border-b border-sbBorder">Herramientas y Accesorios</a>
+                            <a href="#" class="block px-5 py-3 text-sm hover:bg-sbGray hover:text-sbDark border-b border-sbBorder">Aire Libre</a>
+                            <a href="#" class="block px-5 py-3 text-sm hover:bg-sbGray hover:text-sbDark border-b border-sbBorder">Autos, Motos y Bicicletas</a>
+                            <a href="#" class="block px-5 py-3 text-sm hover:bg-sbGray hover:text-sbDark">Construcción e Impermeabilización</a>
                         </div>
                     </li>
-                    <li><a href="#" class="nav-link text-sbText hover:text-sbRed transition">Ofertas</a></li>
-                    <li><a href="#" class="nav-link text-sbText hover:text-sbRed transition">Lanzamientos</a></li>
-                    <li><a href="#" class="nav-link text-sbText hover:text-sbRed transition flex items-center gap-1.5">
-                        Outlet
-                        <span class="bg-sbRed text-white text-[10px] px-1.5 py-0.5 rounded normal-case">-30%</span>
-                    </a></li>
+                    <li><a href="#" class="nav-link text-sbText hover:text-sbDark transition">Ofertas</a></li>
+                    <li><a href="#" class="nav-link text-sbText hover:text-sbDark transition">Lanzamientos</a></li>
+                    <li><a href="#" class="nav-link text-sbText hover:text-sbDark transition">Outlet</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <main class="flex-grow">
-        <!-- ============ HERO ============ -->
-        <section class="relative hero-grad text-white overflow-hidden">
-            <div class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_85%_50%,_#E30613_0%,_transparent_55%)]"></div>
-            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
-                <div>
-                    <span class="inline-block bg-sbRed text-white text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-sm mb-5">¡Nuevo!</span>
-                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-5 leading-[1.05]">
-                        Suprabond<br>
-                        <span class="text-sbRed">Transparente</span><br>
-                        <span class="italic font-bold">Precisión</span>
-                    </h1>
-                    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-lg">
-                        Ponele un punto y aparte a tus reparaciones. Nueva fórmula con aplicador de precisión para los detalles más finos.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <a href="#productos" class="inline-flex items-center justify-center gap-2 bg-sbRed hover:bg-sbRedDark text-white font-bold py-3.5 px-8 text-sm uppercase tracking-wider transition shadow-lg shadow-red-900/40">
-                            Comprar ahora
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </a>
-                        <a href="#" class="inline-flex items-center justify-center bg-transparent border border-white/40 hover:border-white text-white font-bold py-3.5 px-8 text-sm uppercase tracking-wider transition">
-                            Conocer más
-                        </a>
-                    </div>
-                </div>
-                <div class="relative hidden md:flex justify-center">
-                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(227,6,19,0.35)_0%,_transparent_70%)]"></div>
-                    <div class="relative w-72 h-96 bg-gradient-to-b from-white/95 to-white/80 rounded-2xl shadow-2xl flex flex-col items-center justify-center p-8 transform rotate-3 hover:rotate-0 transition duration-500">
-                        <div class="absolute top-3 right-3 bg-sbRed text-white text-[10px] font-bold px-2 py-1 rounded">¡NUEVO!</div>
-                        <div class="w-32 h-56 bg-gradient-to-b from-sbDark via-sbRed to-sbDark rounded-lg shadow-inner flex items-end justify-center pb-4">
-                            <span class="text-white font-extrabold text-xs tracking-widest text-center leading-tight">SUPRABOND<br><span class="text-[10px] opacity-80">PRECISIÓN</span></span>
+        <!-- ============ HERO YELLOW BANNER ============ -->
+        <section class="bg-white pt-6 md:pt-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="relative bg-sbYellow rounded-2xl overflow-hidden">
+                    <div class="grid md:grid-cols-3 items-center min-h-[340px] md:min-h-[400px]">
+                        <!-- Left: maqueta tag -->
+                        <div class="relative h-48 md:h-full flex items-center justify-center bg-gradient-to-br from-amber-100 to-yellow-200 overflow-hidden">
+                            <!-- Diagonal lanzamiento ribbon -->
+                            <div class="absolute -left-12 top-10 bg-sbRed text-white text-xs md:text-sm font-extrabold tracking-widest px-16 py-1.5 -rotate-45 shadow-md">
+                                LANZAMIENTO · LANZAMIENTO
+                            </div>
+                            <!-- Mock house + hand -->
+                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-end gap-3">
+                                <div class="w-20 h-16 md:w-28 md:h-20 bg-gradient-to-b from-amber-700 to-amber-900 rounded-sm opacity-80 shadow-lg"
+                                     style="clip-path: polygon(0 100%, 0 30%, 50% 0, 100% 30%, 100% 100%);"></div>
+                                <div class="w-12 h-24 md:w-16 md:h-32 bg-sbYellow rounded-md shadow-xl flex items-end justify-center pb-2 border-2 border-sbDark/10 -mb-2 rotate-12">
+                                    <span class="text-[7px] md:text-[9px] font-extrabold text-sbDark">SUPRABOND</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="mt-4 text-sbDark font-bold text-sm">Transparente Precisión</p>
-                        <p class="text-xs text-sbMuted">100ml · Aplicador fino</p>
+
+                        <!-- Center: text -->
+                        <div class="px-6 md:px-2 py-8 md:py-12 text-center md:text-left">
+                            <p class="text-sm md:text-base font-semibold text-sbDark mb-2">SI LO PEGÁS, PEGALO PERFECTO</p>
+                            <h1 class="text-5xl md:text-7xl font-black text-sbDark leading-[0.95] tracking-tight mb-2">
+                                Precisión<br>y punto<span class="text-sbRed">.</span>
+                            </h1>
+                            <a href="#productos" class="inline-flex items-center justify-center bg-sbRed hover:bg-red-700 text-white font-extrabold text-base md:text-lg px-8 py-3 rounded-full mt-5 shadow-lg transition">
+                                5% OFF
+                            </a>
+                        </div>
+
+                        <!-- Right: product -->
+                        <div class="relative hidden md:flex h-full items-center justify-center pr-6">
+                            <div class="absolute top-8 right-10 flex flex-col gap-2 items-end z-20">
+                                <span class="bg-sbRed text-white text-xs font-extrabold tracking-wider px-3 py-1 rounded">NUEVO</span>
+                                <span class="bg-sbDark text-white text-[10px] font-extrabold tracking-wider px-2 py-1 rounded leading-tight text-center" style="background:linear-gradient(180deg,#1A1A1A,#3a3a3a);">EXTRA<br>FUERTE</span>
+                            </div>
+                            <div class="absolute bottom-8 left-2 bg-sbRed text-white text-[10px] font-extrabold tracking-wider px-2 py-1.5 leading-tight rounded -rotate-12 z-20">
+                                PICO<br>EXTRA<br>FINO
+                            </div>
+                            <!-- Tube illustration -->
+                            <div class="relative w-64 h-28 -rotate-6">
+                                <div class="absolute inset-y-0 right-0 w-56 bg-gradient-to-r from-sbRed via-sbRed to-red-700 rounded-r-3xl shadow-2xl flex items-center pl-6">
+                                    <div class="text-white">
+                                        <p class="text-[9px] font-bold tracking-widest opacity-80">ADHESIVO DE CONTACTO</p>
+                                        <p class="text-2xl font-black tracking-tight italic leading-none">suprabond</p>
+                                        <p class="text-xs italic font-light">transparente</p>
+                                    </div>
+                                    <div class="ml-auto mr-6 text-right">
+                                        <p class="text-white text-2xl font-black italic">precisión</p>
+                                    </div>
+                                </div>
+                                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-16 bg-sbDark rounded-l-md"></div>
+                                <div class="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-sbDark rounded-full"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ============ BENEFITS BAR ============ -->
-        <section class="bg-sbGray border-y border-sbBorder">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="flex items-center justify-center gap-3">
-                    <svg class="w-7 h-7 text-sbRed" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l4-4h10l4 4M3 8v10a2 2 0 002 2h14a2 2 0 002-2V8M3 8h18"/></svg>
-                    <div class="text-left">
-                        <p class="text-sm font-bold text-sbDark leading-tight">Envío gratis</p>
-                        <p class="text-xs text-sbMuted">En compras +$35.000</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center gap-3">
-                    <svg class="w-7 h-7 text-sbRed" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-                    <div class="text-left">
-                        <p class="text-sm font-bold text-sbDark leading-tight">Somos fabricantes</p>
-                        <p class="text-xs text-sbMuted">Calidad garantizada</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center gap-3">
-                    <svg class="w-7 h-7 text-sbRed" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                    <div class="text-left">
-                        <p class="text-sm font-bold text-sbDark leading-tight">3 cuotas sin interés</p>
-                        <p class="text-xs text-sbMuted">Con todas las tarjetas</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center gap-3">
-                    <svg class="w-7 h-7 text-sbRed" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z M12 8v4l3 2"/></svg>
-                    <div class="text-left">
-                        <p class="text-sm font-bold text-sbDark leading-tight">Cambios fáciles</p>
-                        <p class="text-xs text-sbMuted">Hasta 30 días</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ CATEGORIES ============ -->
+        <!-- ============ MAIN CATEGORIES ============ -->
         <section class="py-14 md:py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-end justify-between mb-10">
-                    <div>
-                        <p class="text-xs font-bold uppercase tracking-widest text-sbRed mb-2">Explorá la tienda</p>
-                        <h2 class="text-2xl md:text-4xl font-extrabold text-sbDark">Categorías destacadas</h2>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-sbDark">Descubrí nuestras categorías principales</h2>
+                    <a href="#" class="text-sm font-semibold text-sbDark hover:text-sbYellowDark underline-offset-4 hover:underline">Ver todas</a>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                    <a href="#" class="group text-center">
+                        <div class="aspect-square bg-white flex items-center justify-center p-6 mb-3">
+                            <!-- Adhesivo tube -->
+                            <div class="relative w-16 h-24 transition group-hover:scale-110">
+                                <div class="absolute inset-x-0 top-2 h-20 bg-sbYellow rounded-b-xl rounded-t-sm shadow-md"></div>
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-5 h-4 bg-sbDark rounded-t"></div>
+                                <div class="absolute top-1/2 -translate-y-1/2 inset-x-2 h-6 bg-sbRed flex items-center justify-center">
+                                    <span class="text-white text-[6px] font-black tracking-tight">SUPRABOND</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm font-medium text-sbDark group-hover:text-sbYellowDark">Adhesivos</p>
+                    </a>
+
+                    <a href="#" class="group text-center">
+                        <div class="aspect-square bg-white flex items-center justify-center p-6 mb-3">
+                            <!-- Sellador cartridge -->
+                            <div class="relative w-12 h-28 transition group-hover:scale-110">
+                                <div class="absolute inset-x-0 top-4 h-24 bg-gradient-to-b from-gray-100 to-gray-300 rounded-md border border-gray-300"></div>
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-6 bg-gray-400 rounded-t"></div>
+                                <div class="absolute top-10 inset-x-0.5 h-10 bg-sbYellow flex items-center justify-center">
+                                    <span class="text-sbDark text-[5px] font-black">SUPRABOND</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm font-medium text-sbDark group-hover:text-sbYellowDark leading-tight">Selladores y Pistolas aplicadoras</p>
+                    </a>
+
+                    <a href="#" class="group text-center">
+                        <div class="aspect-square bg-white flex items-center justify-center p-6 mb-3">
+                            <!-- Padlock -->
+                            <div class="relative w-16 h-20 transition group-hover:scale-110">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-10 border-[3px] border-gray-400 rounded-t-full border-b-0"></div>
+                                <div class="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-b from-sbRed to-red-700 rounded-md shadow-md flex items-center justify-center">
+                                    <div class="bg-white px-1 py-0.5 text-[6px] font-black text-sbDark">99999</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm font-medium text-sbDark group-hover:text-sbYellowDark">Candados y Seguridad</p>
+                    </a>
+
+                    <a href="#" class="group text-center">
+                        <div class="aspect-square bg-white flex items-center justify-center p-6 mb-3">
+                            <!-- Hot melt gun -->
+                            <div class="relative w-24 h-20 transition group-hover:scale-110">
+                                <div class="absolute bottom-0 left-2 w-16 h-8 bg-sbYellow rounded-md shadow-md"></div>
+                                <div class="absolute bottom-2 left-0 w-6 h-3 bg-sbYellow rounded-l"></div>
+                                <div class="absolute bottom-8 left-4 w-14 h-6 bg-sbYellow rounded-t-md"></div>
+                                <div class="absolute bottom-12 left-6 w-2 h-4 bg-sbDark rounded-t"></div>
+                                <div class="absolute bottom-1 right-0 w-8 h-1 bg-gray-300"></div>
+                            </div>
+                        </div>
+                        <p class="text-sm font-medium text-sbDark group-hover:text-sbYellowDark leading-tight">Pistolas encoladoras y Barras Hot Melt</p>
+                    </a>
+
+                    <a href="#" class="group text-center">
+                        <div class="aspect-square bg-white flex items-center justify-center p-6 mb-3">
+                            <!-- Pump/inflador -->
+                            <div class="relative w-16 h-24 transition group-hover:scale-110">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-2 bg-sbDark rounded"></div>
+                                <div class="absolute top-2 left-1/2 -translate-x-1/2 w-2 h-12 bg-gray-500"></div>
+                                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-10 h-10 bg-sbDark rounded-md"></div>
+                                <div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-8 h-2 bg-sbRed"></div>
+                            </div>
+                        </div>
+                        <p class="text-sm font-medium text-sbDark group-hover:text-sbYellowDark">Infladores</p>
+                    </a>
+
+                    <a href="#" class="group text-center">
+                        <div class="aspect-square bg-white flex items-center justify-center p-6 mb-3">
+                            <!-- Tools blister -->
+                            <div class="relative w-20 h-20 transition group-hover:scale-110 bg-gray-100 rounded-md p-2 border border-gray-200">
+                                <div class="grid grid-cols-3 gap-1 h-full">
+                                    <div class="bg-gradient-to-b from-gray-300 to-gray-500 rounded-sm"></div>
+                                    <div class="bg-gradient-to-b from-gray-300 to-gray-500 rounded-sm"></div>
+                                    <div class="bg-gradient-to-b from-gray-300 to-gray-500 rounded-sm"></div>
+                                </div>
+                                <div class="absolute top-1 left-1 right-1 h-3 bg-sbYellow rounded-sm flex items-center justify-center">
+                                    <span class="text-[5px] font-black">SUPRABOND</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm font-medium text-sbDark group-hover:text-sbYellowDark">Herramientas y accesorios</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FEATURED ADHESIVOS - DARK SECTION ============ -->
+        <section id="productos" class="py-12 md:py-16 bg-sbGray">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-sbDark rounded-xl overflow-hidden">
+                    <div class="grid md:grid-cols-5 gap-0">
+                        <!-- Left intro card -->
+                        <div class="md:col-span-1 p-8 flex flex-col justify-between text-white">
+                            <div>
+                                <h2 class="text-2xl md:text-3xl font-extrabold text-sbYellow leading-tight mb-2">Adhesivos<br>de contacto</h2>
+                                <p class="text-sm text-gray-300 mb-6">Para uso profesional y hobbista. Extra Fuerte.</p>
+                                <a href="#" class="inline-block bg-sbYellow hover:bg-sbYellowDark text-sbDark font-bold text-sm px-6 py-2.5 rounded transition">Ver más</a>
+                            </div>
+                            <div class="hidden md:block mt-8">
+                                <!-- Tube illustration -->
+                                <div class="relative w-full h-32">
+                                    <div class="absolute inset-y-0 right-0 left-8 bg-gradient-to-r from-sbYellow to-amber-400 rounded-r-3xl flex items-center pl-3">
+                                        <div class="text-sbDark">
+                                            <p class="text-[8px] font-bold tracking-widest">ADHESIVO DE CONTACTO</p>
+                                            <p class="text-lg font-black italic leading-none">suprabond</p>
+                                            <p class="text-[10px] italic">transparente</p>
+                                            <p class="text-sm italic font-black mt-1">precisión</p>
+                                        </div>
+                                    </div>
+                                    <div class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-12 bg-sbDark rounded-l-md border-2 border-gray-700"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product cards -->
+                        <div class="md:col-span-4 grid grid-cols-2 lg:grid-cols-4 gap-px bg-sbBorder">
+
+                            <!-- Producto 1 -->
+                            <article class="bg-white p-4 flex flex-col group hover:shadow-lg transition">
+                                <div class="relative">
+                                    <span class="absolute top-0 left-0 bg-sbDark text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Ahorrá 5%</span>
+                                    <div class="aspect-square flex items-center justify-center p-4">
+                                        <span class="absolute top-1 right-1 bg-sbRed text-white text-[9px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded z-10">¡NUEVO!</span>
+                                        <div class="relative w-full h-32 flex items-center justify-center">
+                                            <div class="relative w-32 h-16 -rotate-6">
+                                                <div class="absolute inset-y-0 right-0 left-3 bg-gradient-to-r from-sbRed to-red-700 rounded-r-3xl flex items-center pl-2">
+                                                    <p class="text-white text-[7px] font-black italic">suprabond<br>precisión</p>
+                                                </div>
+                                                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-7 bg-sbDark rounded-l-md"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-[10px] font-bold text-sbMuted mb-1 mt-2">SUPRABOND</p>
+                                <h3 class="text-sm font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Adhesivo Suprabond Transparente Precisión - Pomo 100 ml | Pico Extra Fino</h3>
+                                <div class="flex items-baseline gap-2 mb-3">
+                                    <span class="text-base font-extrabold text-sbDark">$13.510,90</span>
+                                    <span class="price-strike text-xs">$14.222,00</span>
+                                </div>
+                                <button class="mt-auto w-full bg-sbDark hover:bg-black text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
+                            </article>
+
+                            <!-- Producto 2 -->
+                            <article class="bg-white p-4 flex flex-col group hover:shadow-lg transition">
+                                <div class="relative">
+                                    <span class="absolute top-0 left-0 bg-sbDark text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Ahorrá 5%</span>
+                                    <div class="aspect-square flex items-center justify-center p-4">
+                                        <span class="absolute top-1 right-1 bg-sbRed text-white text-[9px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded z-10">¡NUEVO!</span>
+                                        <div class="relative w-full h-32 flex items-center justify-center">
+                                            <div class="relative w-24 h-12 -rotate-6">
+                                                <div class="absolute inset-y-0 right-0 left-2 bg-gradient-to-r from-sbRed to-red-700 rounded-r-3xl flex items-center pl-1.5">
+                                                    <p class="text-white text-[6px] font-black italic">suprabond<br>precisión</p>
+                                                </div>
+                                                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-5 bg-sbDark rounded-l-md"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-[10px] font-bold text-sbMuted mb-1 mt-2">SUPRABOND</p>
+                                <h3 class="text-sm font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Adhesivo Suprabond Transparente Precisión - Pomo 50 ml</h3>
+                                <div class="flex items-baseline gap-2 mb-3">
+                                    <span class="text-base font-extrabold text-sbDark">$8.202,30</span>
+                                    <span class="price-strike text-xs">$8.634,00</span>
+                                </div>
+                                <button class="mt-auto w-full bg-sbDark hover:bg-black text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
+                            </article>
+
+                            <!-- Producto 3 -->
+                            <article class="bg-white p-4 flex flex-col group hover:shadow-lg transition">
+                                <div class="relative">
+                                    <span class="absolute top-0 left-0 bg-sbDark text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Ahorrá 5%</span>
+                                    <div class="aspect-square flex items-center justify-center p-4">
+                                        <span class="absolute top-1 right-1 bg-sbRed text-white text-[9px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded z-10">¡NUEVO!</span>
+                                        <div class="relative w-full h-32 flex items-center justify-center">
+                                            <div class="relative w-20 h-10 -rotate-6">
+                                                <div class="absolute inset-y-0 right-0 left-2 bg-gradient-to-r from-sbRed to-red-700 rounded-r-3xl flex items-center pl-1">
+                                                    <p class="text-white text-[5px] font-black italic">suprabond<br>precisión</p>
+                                                </div>
+                                                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-4 bg-sbDark rounded-l-md"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-[10px] font-bold text-sbMuted mb-1 mt-2">SUPRABOND</p>
+                                <h3 class="text-sm font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Adhesivo Suprabond Transparente Precisión - Pomo 25 ml</h3>
+                                <div class="flex items-baseline gap-2 mb-3">
+                                    <span class="text-base font-extrabold text-sbDark">$6.652,85</span>
+                                    <span class="price-strike text-xs">$7.003,00</span>
+                                </div>
+                                <button class="mt-auto w-full bg-sbDark hover:bg-black text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
+                            </article>
+
+                            <!-- Producto 4 -->
+                            <article class="bg-white p-4 flex flex-col group hover:shadow-lg transition">
+                                <div class="relative">
+                                    <span class="absolute top-0 left-0 bg-sbDark text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Ahorrá 5%</span>
+                                    <div class="aspect-square flex items-center justify-center p-4">
+                                        <div class="relative w-full h-32 flex items-center justify-center">
+                                            <div class="relative w-20 h-10 -rotate-6">
+                                                <div class="absolute inset-y-0 right-0 left-2 bg-gradient-to-r from-sbYellow to-amber-400 rounded-r-3xl flex items-center pl-1">
+                                                    <p class="text-sbDark text-[5px] font-black italic">suprabond<br>transparente</p>
+                                                </div>
+                                                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-4 bg-sbDark rounded-l-md"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-[10px] font-bold text-sbMuted mb-1 mt-2">SUPRABOND</p>
+                                <h3 class="text-sm font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Adhesivo Suprabond Transparente - Pomo 25ml</h3>
+                                <div class="flex items-baseline gap-2 mb-3">
+                                    <span class="text-base font-extrabold text-sbDark">$5.820,65</span>
+                                    <span class="price-strike text-xs">$6.127,00</span>
+                                </div>
+                                <button class="mt-auto w-full bg-sbDark hover:bg-black text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
+                            </article>
+
+                        </div>
                     </div>
-                    <a href="#" class="hidden md:inline text-sm font-semibold text-sbRed hover:underline">Ver todas →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SOLUCIONES PARA TU HOGAR ============ -->
+        <section class="py-14 md:py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-end justify-between mb-8">
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-sbDark">Soluciones para tu hogar</h2>
+                    <a href="#" class="text-sm font-semibold text-sbDark hover:text-sbYellowDark underline-offset-4 hover:underline">Ver todos</a>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    <a href="#" class="group bg-sbGray hover:bg-white border border-transparent hover:border-sbRed rounded-lg p-5 text-center transition-all duration-300 hover:shadow-lg">
-                        <div class="aspect-square mb-3 flex items-center justify-center bg-white rounded-md group-hover:scale-105 transition">
-                            <svg class="w-12 h-12 text-sbRed" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 2h6v3l2 2v13a2 2 0 01-2 2H9a2 2 0 01-2-2V7l2-2V2z M10 12h4 M10 16h4"/></svg>
+                    <article class="bg-white border border-sbBorder rounded overflow-hidden group hover:shadow-lg transition">
+                        <div class="aspect-square bg-white flex items-center justify-center p-4">
+                            <div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded flex items-center justify-center p-2">
+                                <div class="bg-sbYellow w-16 h-20 rounded shadow-md flex items-center justify-center">
+                                    <span class="text-[7px] font-black text-sbDark text-center leading-tight">PORTA<br>ESTANTES</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-xs md:text-sm font-bold text-sbDark group-hover:text-sbRed leading-tight">Selladores y Adhesivos</p>
-                    </a>
-                    <a href="#" class="group bg-sbGray hover:bg-white border border-transparent hover:border-sbRed rounded-lg p-5 text-center transition-all duration-300 hover:shadow-lg">
-                        <div class="aspect-square mb-3 flex items-center justify-center bg-white rounded-md group-hover:scale-105 transition">
-                            <svg class="w-12 h-12 text-sbRed" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/></svg>
+                        <div class="p-3">
+                            <p class="text-[10px] font-bold text-sbMuted mb-1">SUPRABOND</p>
+                            <h3 class="text-xs font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Porta Estantes Autoadhesivo Suprabond - 12 Kg Discretos Color Transparente</h3>
+                            <p class="text-base font-extrabold text-sbDark">$10.021,00</p>
                         </div>
-                        <p class="text-xs md:text-sm font-bold text-sbDark group-hover:text-sbRed leading-tight">Accesorios para el Hogar</p>
-                    </a>
-                    <a href="#" class="group bg-sbGray hover:bg-white border border-transparent hover:border-sbRed rounded-lg p-5 text-center transition-all duration-300 hover:shadow-lg">
-                        <div class="aspect-square mb-3 flex items-center justify-center bg-white rounded-md group-hover:scale-105 transition">
-                            <svg class="w-12 h-12 text-sbRed" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11V7a4 4 0 118 0v4 M5 11h18v9a2 2 0 01-2 2H7a2 2 0 01-2-2v-9z"/></svg>
+                    </article>
+
+                    <article class="bg-white border border-sbBorder rounded overflow-hidden group hover:shadow-lg transition">
+                        <div class="aspect-square bg-white flex items-center justify-center p-4">
+                            <div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded flex items-center justify-center p-2">
+                                <div class="w-16 h-20 bg-gradient-to-b from-sbYellow to-amber-300 rounded shadow-md flex items-center justify-center">
+                                    <span class="text-[6px] font-black text-sbDark text-center leading-tight">MOSQUITERO</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-xs md:text-sm font-bold text-sbDark group-hover:text-sbRed leading-tight">Candados y Seguridad</p>
-                    </a>
-                    <a href="#" class="group bg-sbGray hover:bg-white border border-transparent hover:border-sbRed rounded-lg p-5 text-center transition-all duration-300 hover:shadow-lg">
-                        <div class="aspect-square mb-3 flex items-center justify-center bg-white rounded-md group-hover:scale-105 transition">
-                            <svg class="w-12 h-12 text-sbRed" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.7 6.3l3 3-9 9H5.7v-3l9-9z M13 8l3 3 M3 21h18"/></svg>
+                        <div class="p-3">
+                            <p class="text-[10px] font-bold text-sbMuted mb-1">SUPRABOND</p>
+                            <h3 class="text-xs font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Mosquitero Ventana Suprabond Autoadhesivo Abrojo 100x120</h3>
+                            <p class="text-base font-extrabold text-sbDark">$21.488,00</p>
                         </div>
-                        <p class="text-xs md:text-sm font-bold text-sbDark group-hover:text-sbRed leading-tight">Herramientas y Accesorios</p>
-                    </a>
-                    <a href="#" class="group bg-sbGray hover:bg-white border border-transparent hover:border-sbRed rounded-lg p-5 text-center transition-all duration-300 hover:shadow-lg">
-                        <div class="aspect-square mb-3 flex items-center justify-center bg-white rounded-md group-hover:scale-105 transition">
-                            <svg class="w-12 h-12 text-sbRed" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 18l3-8 3 8m6-12l3 8 3-8 M3 18h6 M15 6h6 M9 18l3-8 3 8 M9 18h6"/></svg>
+                    </article>
+
+                    <article class="bg-white border border-sbBorder rounded overflow-hidden group hover:shadow-lg transition">
+                        <div class="aspect-square bg-white flex items-center justify-center p-4">
+                            <div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded flex items-center justify-center p-2">
+                                <div class="w-16 h-20 bg-white border-2 border-sbYellow rounded shadow-md flex items-center justify-center">
+                                    <span class="text-[7px] font-black text-sbDark text-center leading-tight">DOBLE<br>FAZ</span>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-xs md:text-sm font-bold text-sbDark group-hover:text-sbRed leading-tight">Aire Libre</p>
-                    </a>
-                    <a href="#" class="group bg-sbGray hover:bg-white border border-transparent hover:border-sbRed rounded-lg p-5 text-center transition-all duration-300 hover:shadow-lg">
-                        <div class="aspect-square mb-3 flex items-center justify-center bg-white rounded-md group-hover:scale-105 transition">
-                            <svg class="w-12 h-12 text-sbRed" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12h2l1-3h12l1 3h2v6h-2a2 2 0 11-4 0H9a2 2 0 11-4 0H3v-6z"/></svg>
+                        <div class="p-3">
+                            <p class="text-[10px] font-bold text-sbMuted mb-1">SUPRABOND</p>
+                            <h3 class="text-xs font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Lámina Autoadhesiva Suprabond Doble Faz - Remplaza Tornillo</h3>
+                            <p class="text-base font-extrabold text-sbDark">$8.129,00</p>
                         </div>
-                        <p class="text-xs md:text-sm font-bold text-sbDark group-hover:text-sbRed leading-tight">Autos, Motos y Bicicletas</p>
-                    </a>
+                    </article>
+
+                    <article class="bg-white border border-sbBorder rounded overflow-hidden group hover:shadow-lg transition relative">
+                        <span class="absolute top-3 left-3 bg-sbDark text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Ahorrá 10%</span>
+                        <div class="aspect-square bg-white flex items-center justify-center p-4">
+                            <div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded flex items-center justify-center p-2">
+                                <div class="w-20 h-20 bg-sbYellow rounded shadow-md flex items-center justify-center">
+                                    <span class="text-[6px] font-black text-sbDark text-center leading-tight">MOSQUITERO<br>+ MAGNÉTICO</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <p class="text-[10px] font-bold text-sbMuted mb-1">SUPRABOND</p>
+                            <h3 class="text-xs font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Mosquitero para Puertas Magnético + Mosquitero Autoadhesivo 200x200cm</h3>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-base font-extrabold text-sbDark">$97.193,00</span>
+                                <span class="price-strike text-[10px]">$107.993,00</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white border border-sbBorder rounded overflow-hidden group hover:shadow-lg transition">
+                        <div class="aspect-square bg-white flex items-center justify-center p-4">
+                            <div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded flex items-center justify-center p-2">
+                                <div class="w-12 h-20 bg-white border border-gray-300 rounded shadow-sm flex items-end justify-center pb-1">
+                                    <div class="w-8 h-3 bg-sbYellow rounded-sm"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <p class="text-[10px] font-bold text-sbMuted mb-1">SUPRABOND</p>
+                            <h3 class="text-xs font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Percha Autoadhesiva Suprabond Máxima Adherencia - 3kg</h3>
+                            <p class="text-base font-extrabold text-sbDark">$7.871,00</p>
+                        </div>
+                    </article>
+
+                    <article class="bg-white border border-sbBorder rounded overflow-hidden group hover:shadow-lg transition">
+                        <div class="aspect-square bg-white flex items-center justify-center p-4">
+                            <div class="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 rounded flex items-center justify-center p-2">
+                                <div class="w-14 h-20 bg-sbYellow rounded shadow-md flex flex-col items-center justify-center gap-1">
+                                    <div class="w-8 h-1 bg-sbDark rounded"></div>
+                                    <div class="w-8 h-1 bg-sbDark rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <p class="text-[10px] font-bold text-sbMuted mb-1">SUPRABOND</p>
+                            <h3 class="text-xs font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Percha Autoadhesiva Suprabond para Repasador - 2kg</h3>
+                            <p class="text-base font-extrabold text-sbDark">$12.619,00</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- ============ FEATURED PRODUCTS ============ -->
-        <section id="productos" class="py-14 md:py-20 bg-sbGray">
+        <!-- ============ CANDADOS Y SEGURIDAD ============ -->
+        <section class="py-14 md:py-16 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-end justify-between mb-10">
-                    <div>
-                        <p class="text-xs font-bold uppercase tracking-widest text-sbRed mb-2">Lo más buscado</p>
-                        <h2 class="text-2xl md:text-4xl font-extrabold text-sbDark">Adhesivos de contacto</h2>
-                    </div>
-                    <a href="#" class="hidden md:inline text-sm font-semibold text-sbRed hover:underline">Ver todos →</a>
+                <div class="flex items-end justify-between mb-8">
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-sbDark">Candados y Seguridad</h2>
+                    <a href="#" class="text-sm font-semibold text-sbDark hover:text-sbYellowDark underline-offset-4 hover:underline">Ver todos</a>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-
-                    <!-- Producto 1 -->
-                    <article class="bg-white border border-sbBorder rounded-md overflow-hidden group hover:shadow-xl transition-shadow">
-                        <div class="relative aspect-square product-img-placeholder flex items-center justify-center p-8">
-                            <span class="absolute top-3 left-3 badge-new text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">¡Nuevo!</span>
-                            <span class="absolute top-3 right-3 bg-sbDark text-white text-[10px] font-bold px-2 py-1 rounded">-5%</span>
-                            <div class="w-24 h-44 bg-gradient-to-b from-gray-100 via-white to-gray-200 rounded-md shadow-md flex items-end justify-center pb-3 border border-gray-200">
-                                <div class="bg-sbRed text-white text-[8px] font-bold tracking-widest text-center px-2 py-1.5 rounded-sm leading-tight">SUPRABOND<br><span class="text-[6px]">PRECISIÓN</span></div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <article class="bg-white border border-sbBorder rounded overflow-hidden">
+                        <div class="aspect-square bg-white flex items-center justify-center p-4">
+                            <div class="relative w-16 h-20">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-10 border-[3px] border-amber-600 rounded-t-full border-b-0"></div>
+                                <div class="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-b from-amber-500 to-amber-700 rounded-md shadow-md"></div>
                             </div>
-                            <button class="absolute bottom-3 right-3 w-9 h-9 bg-white border border-sbBorder rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition hover:bg-sbRed hover:text-white hover:border-sbRed">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.5 12C4 7 7.5 4.5 12 4.5s8 2.5 9.5 7.5c-1.5 5-5 7.5-9.5 7.5S4 17 2.5 12z"/></svg>
-                            </button>
                         </div>
-                        <div class="p-4">
-                            <h3 class="text-sm font-semibold text-sbDark mb-2 line-clamp-2 min-h-[2.5rem]">Adhesivo Transparente Precisión 100ml</h3>
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="price-strike text-xs">$14.222</span>
-                                <span class="text-lg font-extrabold text-sbDark">$13.510,90</span>
-                            </div>
-                            <button class="w-full bg-sbDark hover:bg-sbRed text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
+                        <div class="p-3">
+                            <p class="text-[10px] font-bold text-sbMuted mb-1">BULIT</p>
+                            <h3 class="text-xs font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Candado de Hierro Dorado BULIT N° 60</h3>
+                            <p class="text-base font-extrabold text-sbDark">$22.987,00</p>
+                            <button class="mt-3 w-full bg-sbDark hover:bg-black text-white text-xs font-bold uppercase tracking-wider py-2 rounded transition">Agregar al carrito</button>
                         </div>
                     </article>
 
-                    <!-- Producto 2 -->
-                    <article class="bg-white border border-sbBorder rounded-md overflow-hidden group hover:shadow-xl transition-shadow">
-                        <div class="relative aspect-square product-img-placeholder flex items-center justify-center p-8">
-                            <span class="absolute top-3 left-3 badge-new text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">¡Nuevo!</span>
-                            <span class="absolute top-3 right-3 bg-sbDark text-white text-[10px] font-bold px-2 py-1 rounded">-5%</span>
-                            <div class="w-20 h-36 bg-gradient-to-b from-gray-100 via-white to-gray-200 rounded-md shadow-md flex items-end justify-center pb-3 border border-gray-200">
-                                <div class="bg-sbRed text-white text-[7px] font-bold tracking-widest text-center px-2 py-1 rounded-sm leading-tight">SUPRABOND<br><span class="text-[5px]">PRECISIÓN</span></div>
+                    <article class="bg-white border border-sbBorder rounded overflow-hidden">
+                        <div class="aspect-square bg-white flex items-center justify-center p-4">
+                            <div class="relative w-16 h-20">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-12 border-[3px] border-gray-400 rounded-t-full border-b-0"></div>
+                                <div class="absolute bottom-0 inset-x-0 h-10 bg-gradient-to-b from-gray-300 to-gray-500 rounded-md shadow-md"></div>
                             </div>
-                            <button class="absolute bottom-3 right-3 w-9 h-9 bg-white border border-sbBorder rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition hover:bg-sbRed hover:text-white hover:border-sbRed">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.5 12C4 7 7.5 4.5 12 4.5s8 2.5 9.5 7.5c-1.5 5-5 7.5-9.5 7.5S4 17 2.5 12z"/></svg>
-                            </button>
                         </div>
-                        <div class="p-4">
-                            <h3 class="text-sm font-semibold text-sbDark mb-2 line-clamp-2 min-h-[2.5rem]">Adhesivo Transparente Precisión 50ml</h3>
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="price-strike text-xs">$8.634</span>
-                                <span class="text-lg font-extrabold text-sbDark">$8.202,30</span>
-                            </div>
-                            <button class="w-full bg-sbDark hover:bg-sbRed text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
+                        <div class="p-3">
+                            <p class="text-[10px] font-bold text-sbMuted mb-1">BULIT</p>
+                            <h3 class="text-xs font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Candado BULIT Reforzado Acero Niquelado N° 30 Aro Largo</h3>
+                            <p class="text-base font-extrabold text-sbDark">$15.429,00</p>
+                            <button class="mt-3 w-full bg-sbDark hover:bg-black text-white text-xs font-bold uppercase tracking-wider py-2 rounded transition">Agregar al carrito</button>
                         </div>
                     </article>
 
-                    <!-- Producto 3 -->
-                    <article class="bg-white border border-sbBorder rounded-md overflow-hidden group hover:shadow-xl transition-shadow">
-                        <div class="relative aspect-square product-img-placeholder flex items-center justify-center p-8">
-                            <span class="absolute top-3 left-3 badge-new text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">¡Nuevo!</span>
-                            <span class="absolute top-3 right-3 bg-sbDark text-white text-[10px] font-bold px-2 py-1 rounded">-5%</span>
-                            <div class="w-16 h-28 bg-gradient-to-b from-gray-100 via-white to-gray-200 rounded-md shadow-md flex items-end justify-center pb-2 border border-gray-200">
-                                <div class="bg-sbRed text-white text-[6px] font-bold tracking-widest text-center px-1.5 py-0.5 rounded-sm leading-tight">SUPRA<br><span class="text-[5px]">PRECISIÓN</span></div>
+                    <article class="bg-white border border-sbBorder rounded overflow-hidden">
+                        <div class="aspect-square bg-white flex items-center justify-center p-4">
+                            <div class="relative w-16 h-20">
+                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-8 border-[3px] border-gray-400 rounded-t-full border-b-0"></div>
+                                <div class="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-b from-gray-300 to-gray-500 rounded-md shadow-md flex items-center justify-center">
+                                    <div class="bg-sbDark px-1 py-0.5 text-[5px] font-black text-white">000</div>
+                                </div>
                             </div>
-                            <button class="absolute bottom-3 right-3 w-9 h-9 bg-white border border-sbBorder rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition hover:bg-sbRed hover:text-white hover:border-sbRed">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.5 12C4 7 7.5 4.5 12 4.5s8 2.5 9.5 7.5c-1.5 5-5 7.5-9.5 7.5S4 17 2.5 12z"/></svg>
-                            </button>
                         </div>
-                        <div class="p-4">
-                            <h3 class="text-sm font-semibold text-sbDark mb-2 line-clamp-2 min-h-[2.5rem]">Adhesivo Transparente Precisión 25ml</h3>
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="price-strike text-xs">$7.003</span>
-                                <span class="text-lg font-extrabold text-sbDark">$6.652,85</span>
-                            </div>
-                            <button class="w-full bg-sbDark hover:bg-sbRed text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
+                        <div class="p-3">
+                            <p class="text-[10px] font-bold text-sbMuted mb-1">BULIT</p>
+                            <h3 class="text-xs font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Candado de Combinación TSA con Cable BULIT</h3>
+                            <p class="text-base font-extrabold text-sbDark">$33.135,00</p>
+                            <button class="mt-3 w-full bg-sbDark hover:bg-black text-white text-xs font-bold uppercase tracking-wider py-2 rounded transition">Agregar al carrito</button>
                         </div>
                     </article>
 
-                    <!-- Producto 4 -->
-                    <article class="bg-white border border-sbBorder rounded-md overflow-hidden group hover:shadow-xl transition-shadow">
-                        <div class="relative aspect-square product-img-placeholder flex items-center justify-center p-8">
-                            <span class="absolute top-3 right-3 bg-sbDark text-white text-[10px] font-bold px-2 py-1 rounded">-5%</span>
-                            <div class="w-16 h-28 bg-gradient-to-b from-gray-100 via-white to-gray-200 rounded-md shadow-md flex items-end justify-center pb-2 border border-gray-200">
-                                <div class="bg-sbRed text-white text-[7px] font-bold tracking-widest text-center px-1.5 py-1 rounded-sm">SUPRA<br>BOND</div>
+                    <article class="bg-white border border-sbBorder rounded overflow-hidden relative">
+                        <span class="absolute top-3 left-3 bg-sbDark text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Ahorrá 10%</span>
+                        <div class="aspect-square bg-white flex items-center justify-center p-4">
+                            <div class="flex gap-1 items-center">
+                                <div class="w-12 h-16 bg-gradient-to-b from-gray-400 to-gray-600 rounded shadow-md"></div>
+                                <div class="w-6 h-6 bg-sbYellow rounded shadow"></div>
                             </div>
-                            <button class="absolute bottom-3 right-3 w-9 h-9 bg-white border border-sbBorder rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition hover:bg-sbRed hover:text-white hover:border-sbRed">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.5 12C4 7 7.5 4.5 12 4.5s8 2.5 9.5 7.5c-1.5 5-5 7.5-9.5 7.5S4 17 2.5 12z"/></svg>
-                            </button>
                         </div>
-                        <div class="p-4">
-                            <h3 class="text-sm font-semibold text-sbDark mb-2 line-clamp-2 min-h-[2.5rem]">Adhesivo Transparente 25ml</h3>
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="price-strike text-xs">$6.127</span>
-                                <span class="text-lg font-extrabold text-sbDark">$5.820,65</span>
+                        <div class="p-3">
+                            <p class="text-[10px] font-bold text-sbMuted mb-1">BULIT</p>
+                            <h3 class="text-xs font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Traba U Máxima Seguridad + Traba Discos BULIT</h3>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-base font-extrabold text-sbDark">$86.850,00</span>
+                                <span class="price-strike text-[10px]">$96.500,00</span>
                             </div>
-                            <button class="w-full bg-sbDark hover:bg-sbRed text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
+                            <button class="mt-3 w-full bg-sbDark hover:bg-black text-white text-xs font-bold uppercase tracking-wider py-2 rounded transition">Agregar al carrito</button>
                         </div>
                     </article>
 
-                    <!-- Producto 5 -->
-                    <article class="bg-white border border-sbBorder rounded-md overflow-hidden group hover:shadow-xl transition-shadow">
-                        <div class="relative aspect-square product-img-placeholder flex items-center justify-center p-8">
-                            <span class="absolute top-3 right-3 bg-sbDark text-white text-[10px] font-bold px-2 py-1 rounded">-5%</span>
-                            <div class="w-20 h-36 bg-gradient-to-b from-gray-100 via-white to-gray-200 rounded-md shadow-md flex items-end justify-center pb-2 border border-gray-200">
-                                <div class="bg-sbDark text-white text-[7px] font-bold tracking-widest text-center px-2 py-1 rounded-sm leading-tight">SUPRABOND<br><span class="text-[5px] text-sbRed">EXTRA FUERTE</span></div>
+                    <article class="bg-white border border-sbBorder rounded overflow-hidden relative">
+                        <span class="absolute top-3 left-3 bg-sbDark text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Ahorrá 10%</span>
+                        <div class="aspect-square bg-white flex items-center justify-center p-4">
+                            <div class="relative w-16 h-16">
+                                <div class="absolute inset-0 bg-sbDark rounded-full"></div>
+                                <div class="absolute inset-2 bg-gradient-to-br from-gray-700 to-sbDark rounded-full flex items-center justify-center">
+                                    <div class="w-6 h-6 bg-gray-400 rounded-full"></div>
+                                </div>
                             </div>
-                            <button class="absolute bottom-3 right-3 w-9 h-9 bg-white border border-sbBorder rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition hover:bg-sbRed hover:text-white hover:border-sbRed">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.5 12C4 7 7.5 4.5 12 4.5s8 2.5 9.5 7.5c-1.5 5-5 7.5-9.5 7.5S4 17 2.5 12z"/></svg>
-                            </button>
                         </div>
-                        <div class="p-4">
-                            <h3 class="text-sm font-semibold text-sbDark mb-2 line-clamp-2 min-h-[2.5rem]">Adhesivo Transparente Extra Fuerte 50ml</h3>
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="price-strike text-xs">$7.995</span>
-                                <span class="text-lg font-extrabold text-sbDark">$7.595,25</span>
+                        <div class="p-3">
+                            <p class="text-[10px] font-bold text-sbMuted mb-1">BULIT</p>
+                            <h3 class="text-xs font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Cadena BULIT Máxima Seguridad 150cm + Candado Combinación</h3>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-base font-extrabold text-sbDark">$93.524,00</span>
+                                <span class="price-strike text-[10px]">$103.916,00</span>
                             </div>
-                            <button class="w-full bg-sbDark hover:bg-sbRed text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
-                        </div>
-                    </article>
-
-                    <!-- Producto 6 -->
-                    <article class="bg-white border border-sbBorder rounded-md overflow-hidden group hover:shadow-xl transition-shadow">
-                        <div class="relative aspect-square product-img-placeholder flex items-center justify-center p-8">
-                            <span class="absolute top-3 right-3 bg-sbDark text-white text-[10px] font-bold px-2 py-1 rounded">-5%</span>
-                            <div class="w-24 h-44 bg-gradient-to-b from-gray-100 via-white to-gray-200 rounded-md shadow-md flex items-end justify-center pb-3 border border-gray-200">
-                                <div class="bg-sbRed text-white text-[8px] font-bold tracking-widest text-center px-2 py-1.5 rounded-sm leading-tight">SUPRABOND<br><span class="text-[6px]">ESTUCHE</span></div>
-                            </div>
-                            <button class="absolute bottom-3 right-3 w-9 h-9 bg-white border border-sbBorder rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition hover:bg-sbRed hover:text-white hover:border-sbRed">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.5 12C4 7 7.5 4.5 12 4.5s8 2.5 9.5 7.5c-1.5 5-5 7.5-9.5 7.5S4 17 2.5 12z"/></svg>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-sm font-semibold text-sbDark mb-2 line-clamp-2 min-h-[2.5rem]">Adhesivo Transparente 100ml Estuche</h3>
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="price-strike text-xs">$13.168</span>
-                                <span class="text-lg font-extrabold text-sbDark">$12.509,60</span>
-                            </div>
-                            <button class="w-full bg-sbDark hover:bg-sbRed text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
+                            <button class="mt-3 w-full bg-sbDark hover:bg-black text-white text-xs font-bold uppercase tracking-wider py-2 rounded transition">Agregar al carrito</button>
                         </div>
                     </article>
 
-                    <!-- Producto 7 -->
-                    <article class="bg-white border border-sbBorder rounded-md overflow-hidden group hover:shadow-xl transition-shadow">
-                        <div class="relative aspect-square product-img-placeholder flex items-center justify-center p-8">
-                            <span class="absolute top-3 right-3 bg-sbDark text-white text-[10px] font-bold px-2 py-1 rounded">-5%</span>
-                            <div class="w-16 h-28 bg-gradient-to-b from-gray-100 via-white to-gray-200 rounded-md shadow-md flex items-end justify-center pb-2 border border-gray-200">
-                                <div class="bg-sbDark text-white text-[6px] font-bold tracking-widest text-center px-1.5 py-1 rounded-sm leading-tight">SUPRA<br><span class="text-sbRed">EXTRA</span></div>
+                    <article class="bg-white border border-sbBorder rounded overflow-hidden relative">
+                        <span class="absolute top-3 left-3 bg-sbDark text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded z-10">Ahorrá 10%</span>
+                        <div class="aspect-square bg-white flex items-center justify-center p-4">
+                            <div class="relative w-16 h-16">
+                                <div class="absolute inset-0 bg-sbBlue rounded-full opacity-30"></div>
+                                <div class="absolute inset-2 bg-gradient-to-br from-sbBlue to-blue-700 rounded-full flex items-center justify-center">
+                                    <div class="w-5 h-5 bg-white rounded-full"></div>
+                                </div>
                             </div>
-                            <button class="absolute bottom-3 right-3 w-9 h-9 bg-white border border-sbBorder rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition hover:bg-sbRed hover:text-white hover:border-sbRed">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.5 12C4 7 7.5 4.5 12 4.5s8 2.5 9.5 7.5c-1.5 5-5 7.5-9.5 7.5S4 17 2.5 12z"/></svg>
-                            </button>
                         </div>
-                        <div class="p-4">
-                            <h3 class="text-sm font-semibold text-sbDark mb-2 line-clamp-2 min-h-[2.5rem]">Adhesivo Transparente Extra Fuerte 25ml</h3>
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="price-strike text-xs">$6.573</span>
-                                <span class="text-lg font-extrabold text-sbDark">$6.244,35</span>
+                        <div class="p-3">
+                            <p class="text-[10px] font-bold text-sbMuted mb-1">BULIT</p>
+                            <h3 class="text-xs font-medium text-sbDark mb-2 leading-tight min-h-[2.5rem]">Combo BULIT para Bicicletas Inflador + Linga de Combinación</h3>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-base font-extrabold text-sbDark">$48.897,00</span>
+                                <span class="price-strike text-[10px]">$54.331,00</span>
                             </div>
-                            <button class="w-full bg-sbDark hover:bg-sbRed text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
-                        </div>
-                    </article>
-
-                    <!-- Producto 8 -->
-                    <article class="bg-white border border-sbBorder rounded-md overflow-hidden group hover:shadow-xl transition-shadow">
-                        <div class="relative aspect-square product-img-placeholder flex items-center justify-center p-8">
-                            <span class="absolute top-3 left-3 badge-sale text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Ahorrá 10%</span>
-                            <span class="absolute top-3 right-3 bg-sbRed text-white text-[10px] font-bold px-2 py-1 rounded">-10%</span>
-                            <div class="grid grid-cols-2 gap-1 w-28">
-                                <div class="h-12 bg-sbRed rounded-sm"></div>
-                                <div class="h-12 bg-sbDark rounded-sm"></div>
-                                <div class="h-12 bg-sbDark rounded-sm"></div>
-                                <div class="h-12 bg-sbRed rounded-sm"></div>
-                            </div>
-                            <button class="absolute bottom-3 right-3 w-9 h-9 bg-white border border-sbBorder rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition hover:bg-sbRed hover:text-white hover:border-sbRed">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.5 12C4 7 7.5 4.5 12 4.5s8 2.5 9.5 7.5c-1.5 5-5 7.5-9.5 7.5S4 17 2.5 12z"/></svg>
-                            </button>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-sm font-semibold text-sbDark mb-2 line-clamp-2 min-h-[2.5rem]">Kit Emprendedor Manualidades</h3>
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="price-strike text-xs">$21.026</span>
-                                <span class="text-lg font-extrabold text-sbDark">$18.923</span>
-                            </div>
-                            <button class="w-full bg-sbDark hover:bg-sbRed text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
+                            <button class="mt-3 w-full bg-sbDark hover:bg-black text-white text-xs font-bold uppercase tracking-wider py-2 rounded transition">Agregar al carrito</button>
                         </div>
                     </article>
-
                 </div>
             </div>
         </section>
 
-        <!-- ============ DOUBLE BANNER ============ -->
-        <section class="py-14 bg-white">
+        <!-- ============ DOUBLE BANNER (yellow + blue) ============ -->
+        <section class="pb-14 md:pb-16 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
-                <a href="#" class="relative h-72 md:h-80 overflow-hidden rounded-lg group bg-gradient-to-br from-sbRed via-sbRedDark to-sbDark flex items-end p-8">
-                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_rgba(255,255,255,0.15)_0%,_transparent_60%)]"></div>
-                    <div class="relative text-white">
-                        <p class="text-xs font-bold uppercase tracking-widest opacity-80 mb-2">Nuevo</p>
-                        <h3 class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Suprabond Transparente<br>Precisión</h3>
-                        <p class="text-sm opacity-90 mb-5 max-w-xs">Ponele un punto y aparte a tus reparaciones más finas.</p>
-                        <span class="inline-flex items-center gap-2 bg-white text-sbDark text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded group-hover:bg-sbDark group-hover:text-white transition">
-                            Descubrilo
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </span>
+                <a href="#" class="relative h-64 md:h-72 overflow-hidden rounded-xl group bg-sbYellow flex items-center p-8">
+                    <span class="absolute top-6 right-6 bg-sbRed text-white text-xs font-extrabold tracking-widest px-3 py-1 rounded">NUEVO</span>
+                    <div class="relative max-w-[55%]">
+                        <h3 class="text-xl md:text-2xl font-extrabold text-sbDark leading-tight mb-2">Nuevo Suprabond Transparente Precisión</h3>
+                        <p class="text-xs text-sbDark/80 mb-5">Ponele un punto y aparte a lo que conocías en precisión de pegado.</p>
+                        <span class="inline-block bg-sbDark hover:bg-black text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded transition">Ver más</span>
+                    </div>
+                    <!-- Tube illustration -->
+                    <div class="absolute right-6 bottom-6 w-44 h-20 -rotate-6">
+                        <div class="absolute inset-y-0 right-0 left-4 bg-gradient-to-r from-sbRed to-red-700 rounded-r-3xl flex items-center pl-2">
+                            <div class="text-white text-[8px] font-black italic leading-tight">
+                                <p>suprabond</p>
+                                <p class="text-[6px]">transparente</p>
+                                <p class="text-[10px] mt-0.5">precisión</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-9 bg-sbDark rounded-l-md"></div>
                     </div>
                 </a>
-                <a href="#" class="relative h-72 md:h-80 overflow-hidden rounded-lg group bg-gradient-to-br from-sbDark via-[#0a0a0a] to-[#1a1a1a] flex items-end p-8">
-                    <div class="absolute top-8 right-8 w-32 h-32 bg-yellow-300/20 rounded-full blur-3xl"></div>
-                    <div class="absolute top-12 right-12 text-yellow-300 text-6xl">
-                        <svg class="w-20 h-20" fill="currentColor" viewBox="0 0 24 24"><path d="M11 21V11H7l5-9 5 9h-4v10h-2z"/></svg>
+
+                <a href="#" class="relative h-64 md:h-72 overflow-hidden rounded-xl group bg-sbBlue flex items-center p-8">
+                    <div class="relative max-w-[55%]">
+                        <h3 class="text-xl md:text-2xl font-extrabold text-white leading-tight mb-2">Conocé la nueva línea de Linternas BULIT</h3>
+                        <p class="text-xs text-white/90 mb-5">Aprovechá la noche al aire libre, de uso cotidiano y profesionales.</p>
+                        <span class="inline-block bg-sbDark hover:bg-black text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded transition">Ver más</span>
                     </div>
-                    <div class="relative text-white">
-                        <p class="text-xs font-bold uppercase tracking-widest text-yellow-300 mb-2">Línea BULIT</p>
-                        <h3 class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Conocé la nueva línea<br>de Linternas BULIT</h3>
-                        <p class="text-sm opacity-80 mb-5 max-w-xs">Aprovechá la noche al aire libre con la mejor potencia lumínica.</p>
-                        <span class="inline-flex items-center gap-2 bg-yellow-300 text-sbDark text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded group-hover:bg-white transition">
-                            Ver linternas
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                        </span>
+                    <!-- Linterna illustrations -->
+                    <div class="absolute right-6 bottom-6 flex items-end gap-2">
+                        <div class="w-12 h-8 bg-sbDark rounded-md shadow-lg flex items-center justify-end pr-1">
+                            <div class="w-2 h-3 bg-yellow-200 rounded-sm"></div>
+                        </div>
+                        <div class="w-10 h-14 bg-gradient-to-b from-sbDark to-gray-900 rounded-md shadow-lg flex items-start justify-center pt-1">
+                            <div class="w-3 h-3 bg-yellow-200 rounded-full"></div>
+                        </div>
+                        <div class="w-8 h-10 bg-sbDark rounded-md shadow-lg"></div>
                     </div>
                 </a>
             </div>
         </section>
 
-        <!-- ============ HOME SOLUTIONS SECTION ============ -->
-        <section class="py-14 md:py-20 bg-sbGray">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-end justify-between mb-10">
+        <!-- ============ TRUST BAR (3 cards yellow icons) ============ -->
+        <section class="pb-14 md:pb-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-4">
+                <div class="bg-white border border-sbBorder rounded-lg p-6 flex items-center gap-5">
+                    <div class="w-16 h-16 bg-sbYellow rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-8 h-8 text-sbDark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </div>
                     <div>
-                        <p class="text-xs font-bold uppercase tracking-widest text-sbRed mb-2">Para tu casa</p>
-                        <h2 class="text-2xl md:text-4xl font-extrabold text-sbDark">Soluciones para tu hogar</h2>
+                        <p class="font-extrabold text-sbDark">¿Tenés dudas? ¡Contactate con nosotros!</p>
+                        <p class="text-xs text-sbMuted mt-1">Te acercamos nuestros <a href="#" class="underline">Canales de Contacto</a></p>
                     </div>
-                    <a href="#" class="hidden md:inline text-sm font-semibold text-sbRed hover:underline">Ver todos →</a>
                 </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                    <article class="bg-white border border-sbBorder rounded-md overflow-hidden group hover:shadow-xl transition">
-                        <div class="relative aspect-square product-img-placeholder flex items-center justify-center p-8">
-                            <span class="absolute top-3 right-3 bg-sbDark text-white text-[10px] font-bold px-2 py-1 rounded">-5%</span>
-                            <div class="w-20 h-32 bg-gradient-to-b from-gray-200 to-white rounded-t-full border border-gray-300 flex items-end justify-center pb-2">
-                                <span class="text-[7px] font-bold text-sbDark">SILICONA</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-sm font-semibold text-sbDark mb-2 min-h-[2.5rem]">Silicona Sanitaria Antihongos 280ml</h3>
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="price-strike text-xs">$9.450</span>
-                                <span class="text-lg font-extrabold text-sbDark">$8.977,50</span>
-                            </div>
-                            <button class="w-full bg-sbDark hover:bg-sbRed text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
-                        </div>
-                    </article>
-
-                    <article class="bg-white border border-sbBorder rounded-md overflow-hidden group hover:shadow-xl transition">
-                        <div class="relative aspect-square product-img-placeholder flex items-center justify-center p-8">
-                            <span class="absolute top-3 right-3 bg-sbDark text-white text-[10px] font-bold px-2 py-1 rounded">-5%</span>
-                            <div class="w-24 h-36 bg-gradient-to-b from-sbRed to-sbRedDark rounded-md shadow-md flex items-center justify-center text-white text-[8px] font-extrabold tracking-widest text-center leading-tight">CINTA<br>DOBLE FAZ</div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-sm font-semibold text-sbDark mb-2 min-h-[2.5rem]">Cinta Doble Faz Montaje 19mm x 5m</h3>
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="price-strike text-xs">$4.580</span>
-                                <span class="text-lg font-extrabold text-sbDark">$4.351</span>
-                            </div>
-                            <button class="w-full bg-sbDark hover:bg-sbRed text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
-                        </div>
-                    </article>
-
-                    <article class="bg-white border border-sbBorder rounded-md overflow-hidden group hover:shadow-xl transition">
-                        <div class="relative aspect-square product-img-placeholder flex items-center justify-center p-8">
-                            <span class="absolute top-3 left-3 badge-new text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">¡Nuevo!</span>
-                            <div class="w-16 h-32 bg-gradient-to-b from-gray-100 to-gray-300 rounded-md shadow-md border border-gray-300 flex items-end justify-center pb-2">
-                                <span class="text-[7px] font-bold text-sbDark text-center leading-tight">PEGAMENTO<br>UNIVERSAL</span>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-sm font-semibold text-sbDark mb-2 min-h-[2.5rem]">Pegamento Universal Multiuso 30g</h3>
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="text-lg font-extrabold text-sbDark">$5.220</span>
-                            </div>
-                            <button class="w-full bg-sbDark hover:bg-sbRed text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
-                        </div>
-                    </article>
-
-                    <article class="bg-white border border-sbBorder rounded-md overflow-hidden group hover:shadow-xl transition">
-                        <div class="relative aspect-square product-img-placeholder flex items-center justify-center p-8">
-                            <span class="absolute top-3 right-3 bg-sbDark text-white text-[10px] font-bold px-2 py-1 rounded">-5%</span>
-                            <div class="w-28 h-20 bg-gradient-to-r from-gray-700 to-gray-900 rounded-md shadow-md flex items-center justify-center">
-                                <div class="w-10 h-14 bg-yellow-400 rounded-sm shadow-inner"></div>
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-sm font-semibold text-sbDark mb-2 min-h-[2.5rem]">Pistola Aplicadora Profesional</h3>
-                            <div class="flex items-baseline gap-2 mb-3">
-                                <span class="price-strike text-xs">$22.300</span>
-                                <span class="text-lg font-extrabold text-sbDark">$21.185</span>
-                            </div>
-                            <button class="w-full bg-sbDark hover:bg-sbRed text-white text-xs font-bold uppercase tracking-wider py-2.5 rounded transition">Agregar al carrito</button>
-                        </div>
-                    </article>
+                <div class="bg-white border border-sbBorder rounded-lg p-6 flex items-center gap-5">
+                    <div class="w-16 h-16 bg-sbYellow rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-8 h-8 text-sbDark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l4-4h10l4 4M3 8v10a2 2 0 002 2h14a2 2 0 002-2V8M3 8h18"/></svg>
+                    </div>
+                    <div>
+                        <p class="font-extrabold text-sbDark">¡Envío GRATIS a todo el país!</p>
+                        <p class="text-xs text-sbMuted mt-1">En compras superiores a $35.000. <a href="#" class="underline">Ver métodos de envío</a></p>
+                    </div>
+                </div>
+                <div class="bg-white border border-sbBorder rounded-lg p-6 flex items-center gap-5">
+                    <div class="w-16 h-16 bg-sbYellow rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-8 h-8 text-sbDark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.6 1.6a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div>
+                        <p class="font-extrabold text-sbDark">¡Compra tranquilo!</p>
+                        <p class="text-xs text-sbMuted mt-1">Somos fabricantes, te garantizamos la calidad de todos nuestros productos.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ============ BRAND TRUST ============ -->
-        <section class="bg-sbDark text-white py-14">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <p class="text-xs font-bold uppercase tracking-widest text-sbRed mb-3">Calidad garantizada</p>
-                <h2 class="text-3xl md:text-5xl font-extrabold mb-4">Somos fabricantes,<br>te garantizamos la calidad.</h2>
-                <p class="text-base md:text-lg text-gray-300 max-w-2xl mx-auto mb-8">Más de 60 años desarrollando soluciones adhesivas, selladores y herramientas para la industria, la construcción y el hogar argentino.</p>
-                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-14 opacity-80">
-                    <div class="text-2xl md:text-3xl font-extrabold tracking-tight">SUPRABOND</div>
-                    <div class="text-2xl md:text-3xl font-extrabold tracking-tight italic">BULIT</div>
-                    <div class="text-2xl md:text-3xl font-extrabold tracking-tight">SOMERSET</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ NEWSLETTER ============ -->
-        <section class="bg-white py-14 border-t border-sbBorder">
+        <!-- ============ NEWSLETTER YELLOW ============ -->
+        <section class="bg-sbYellow py-14 md:py-16">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h3 class="text-2xl md:text-3xl font-extrabold text-sbDark mb-3">Suscribite y recibí novedades</h3>
-                <p class="text-sbMuted mb-6">Lanzamientos, ofertas exclusivas y tips para tus reparaciones.</p>
-                <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                    <input type="email" placeholder="Tu email" class="flex-1 border border-sbBorder rounded px-4 py-3 text-sm focus:outline-none focus:border-sbRed">
-                    <button type="submit" class="bg-sbRed hover:bg-sbRedDark text-white font-bold uppercase tracking-wider text-xs px-6 py-3 rounded transition">Suscribirme</button>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-sbDark mb-3 leading-tight">Enterate antes que nadie de nuestros<br>Lanzamientos y Promociones</h3>
+                <p class="text-sm text-sbDark/80 mb-6">Dejanos tu email y te enviaremos todas las novedades.</p>
+                <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+                    <input type="email" placeholder="Tu email" class="flex-1 border border-sbDark/20 rounded px-4 py-3 text-sm focus:outline-none focus:border-sbDark bg-white">
+                    <button type="submit" class="bg-sbDark hover:bg-black text-white font-bold text-sm px-8 py-3 rounded transition">Suscribirse</button>
                 </form>
             </div>
         </section>
     </main>
 
     <!-- ============ FOOTER ============ -->
-    <footer class="bg-sbDark text-gray-300">
+    <footer class="bg-sbGray text-sbDark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-2 md:grid-cols-5 gap-8">
-            <div class="col-span-2">
-                <img src="https://tienda.suprabond.com/cdn/shop/files/SBD_logotipo_140x@2x.png?v=1768840194"
-                     alt="Suprabond" class="h-10 w-auto mb-5 brightness-0 invert">
-                <p class="text-sm text-gray-400 mb-4 max-w-xs">Líderes en adhesivos, selladores y soluciones para industria, construcción y hogar.</p>
-                <div class="flex items-center gap-3">
-                    <a href="#" aria-label="Facebook" class="w-9 h-9 border border-gray-700 rounded-full flex items-center justify-center hover:bg-sbRed hover:border-sbRed transition">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9V14.9H7.9V12h2.5V9.8c0-2.5 1.5-3.8 3.7-3.8 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg>
-                    </a>
-                    <a href="#" aria-label="Instagram" class="w-9 h-9 border border-gray-700 rounded-full flex items-center justify-center hover:bg-sbRed hover:border-sbRed transition">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.3-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.1.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.3 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.1 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.3 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.1-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.3-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.1-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 8.1a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4zm6.2-8.3a1.1 1.1 0 11-2.3 0 1.1 1.1 0 012.3 0z"/></svg>
-                    </a>
-                    <a href="#" aria-label="YouTube" class="w-9 h-9 border border-gray-700 rounded-full flex items-center justify-center hover:bg-sbRed hover:border-sbRed transition">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.9 2.5 12 2.5 12 2.5s-4.9 0-8.3.4c-.5.1-1.5.1-2.3 1-.7.7-.9 2.3-.9 2.3S0 8.1 0 10v1.9c0 1.9.3 3.8.3 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.8.4 8.3.4.5 0 4.9 0 8.3-.4.5-.1 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.3-1.9.3-3.8V10c0-1.9-.3-3.8-.3-3.8zM9.5 14V8l6.3 3-6.3 3z"/></svg>
-                    </a>
-                    <a href="#" aria-label="TikTok" class="w-9 h-9 border border-gray-700 rounded-full flex items-center justify-center hover:bg-sbRed hover:border-sbRed transition">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.6 6.3a4.8 4.8 0 01-3.8-4.3V2H12v14.5a2.7 2.7 0 11-2.7-2.7c.3 0 .5 0 .8.1V10a6.6 6.6 0 00-.8-.1A6.6 6.6 0 1015.9 17V9.3a8.5 8.5 0 004.9 1.6V7a4.8 4.8 0 01-1.2-.7z"/></svg>
-                    </a>
-                </div>
-            </div>
-
             <div>
-                <h4 class="text-white font-bold text-sm uppercase tracking-wide mb-4">Información</h4>
-                <ul class="space-y-2.5 text-sm text-gray-400">
-                    <li><a href="#" class="hover:text-white transition">¿Quiénes Somos?</a></li>
-                    <li><a href="#" class="hover:text-white transition">Política de Cambios y Devoluciones</a></li>
-                    <li><a href="#" class="hover:text-white transition">Política de Envíos</a></li>
-                    <li><a href="#" class="hover:text-white transition">Preguntas Frecuentes</a></li>
+                <h4 class="font-extrabold text-sm uppercase tracking-wider mb-5">La empresa</h4>
+                <ul class="space-y-3 text-sm text-sbText">
+                    <li><a href="#" class="hover:text-sbYellowDark transition">¿Quiénes Somos?</a></li>
+                    <li><a href="#" class="hover:text-sbYellowDark transition">Política de Cambios y Devoluciones</a></li>
+                    <li><a href="#" class="hover:text-sbYellowDark transition">Política de Envíos</a></li>
+                    <li><a href="#" class="hover:text-sbYellowDark transition">Preguntas Frecuentes</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="text-white font-bold text-sm uppercase tracking-wide mb-4">Comprar</h4>
-                <ul class="space-y-2.5 text-sm text-gray-400">
-                    <li><a href="#" class="hover:text-white transition">Categorías</a></li>
-                    <li><a href="#" class="hover:text-white transition">Ofertas</a></li>
-                    <li><a href="#" class="hover:text-white transition">Lanzamientos</a></li>
-                    <li><a href="#" class="hover:text-white transition">Outlet</a></li>
+                <h4 class="font-extrabold text-sm uppercase tracking-wider mb-5">Categorias principales</h4>
+                <ul class="space-y-3 text-sm text-sbText">
+                    <li><a href="#" class="hover:text-sbYellowDark transition">Selladores y Adhesivos</a></li>
+                    <li><a href="#" class="hover:text-sbYellowDark transition">Accesorios para el Hogar</a></li>
+                    <li><a href="#" class="hover:text-sbYellowDark transition">Autos, Motos y Bicicletas</a></li>
+                    <li><a href="#" class="hover:text-sbYellowDark transition">Herramientas y Accesorios</a></li>
+                    <li><a href="#" class="hover:text-sbYellowDark transition">Construcción e Impermeabilización</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="text-white font-bold text-sm uppercase tracking-wide mb-4">Contacto</h4>
-                <ul class="space-y-2.5 text-sm text-gray-400">
-                    <li class="flex items-start gap-2">
-                        <svg class="w-4 h-4 mt-0.5 text-sbRed flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-1.7.86a11 11 0 005.52 5.52l.86-1.7a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg>
-                        11 6053-8288
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <svg class="w-4 h-4 mt-0.5 text-sbRed flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        tienda@suprabond.com.ar
-                    </li>
+                <h4 class="font-extrabold text-sm uppercase tracking-wider mb-5">¡Somos fabricantes!</h4>
+                <ul class="space-y-3 text-sm text-sbText">
+                    <li><a href="#" class="hover:text-sbYellowDark transition">Suprabond</a></li>
+                    <li><a href="#" class="hover:text-sbYellowDark transition">BULIT</a></li>
+                    <li><a href="#" class="hover:text-sbYellowDark transition">Somerset</a></li>
                 </ul>
+            </div>
+
+            <div>
+                <h4 class="font-extrabold text-sm uppercase tracking-wider mb-5">Contactate con nosotros</h4>
+                <ul class="space-y-3 text-sm text-sbText">
+                    <li><a href="#" class="hover:text-sbYellowDark transition flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 14.4l-2.6-1.2c-.4-.2-.8-.1-1.1.2l-.9 1c-1.6-.8-2.9-2.1-3.7-3.7l1-1c.3-.3.4-.7.2-1.1L9.2 6c-.2-.4-.7-.6-1.1-.5L5.5 6.2c-.5.1-.8.5-.8 1 0 5.6 4.5 10.1 10.1 10.1.5 0 .9-.3 1-.8l.7-2.6c.1-.4-.1-.9-.5-1.1-.2-.1-.3-.4-.5-.4z M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/></svg>
+                        WhatsApp
+                    </a></li>
+                    <li><a href="#" class="hover:text-sbYellowDark transition flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        Email
+                    </a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-extrabold text-sm uppercase tracking-wider mb-5">Suscribite</h4>
+                <p class="text-xs text-sbMuted mb-3">Dejanos tu email para enterarte de promociones y lanzamientos.</p>
+                <form class="space-y-2">
+                    <input type="email" placeholder="Tu email" class="w-full border border-sbBorder rounded px-3 py-2 text-sm bg-white focus:outline-none focus:border-sbDark">
+                    <button type="submit" class="w-full bg-sbYellow hover:bg-sbYellowDark text-sbDark font-bold text-sm py-2 rounded transition">Suscribir</button>
+                </form>
             </div>
         </div>
 
-        <div class="border-t border-gray-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
-                <p class="text-xs text-gray-500">© 2026 Tienda Suprabond. Todos los derechos reservados.</p>
-                <div class="flex items-center gap-2 opacity-70">
-                    <div class="bg-white/10 px-2.5 py-1 rounded text-[10px] text-gray-300 font-semibold">VISA</div>
-                    <div class="bg-white/10 px-2.5 py-1 rounded text-[10px] text-gray-300 font-semibold">MASTER</div>
-                    <div class="bg-white/10 px-2.5 py-1 rounded text-[10px] text-gray-300 font-semibold">AMEX</div>
-                    <div class="bg-white/10 px-2.5 py-1 rounded text-[10px] text-gray-300 font-semibold">MP</div>
+        <div class="border-t border-sbBorder">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-xs text-sbMuted">© 2026 Tienda Suprabond &nbsp;|&nbsp; Tecnología de Shopify</p>
+                <div class="flex items-center gap-3">
+                    <span class="text-xs font-semibold text-sbMuted">Seguinos</span>
+                    <a href="#" aria-label="Facebook" class="w-7 h-7 bg-gray-300 hover:bg-sbDark text-white rounded-full flex items-center justify-center transition">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9V14.9H7.9V12h2.5V9.8c0-2.5 1.5-3.8 3.7-3.8 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="w-7 h-7 bg-gray-300 hover:bg-sbDark text-white rounded-full flex items-center justify-center transition">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.3-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.1.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.3 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.1 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.3 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.1-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.3-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.1-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 110 9.8 4.9 4.9 0 010-9.8zm0 8.1a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4zm6.2-8.3a1.1 1.1 0 11-2.3 0 1.1 1.1 0 012.3 0z"/></svg>
+                    </a>
+                    <a href="#" aria-label="YouTube" class="w-7 h-7 bg-gray-300 hover:bg-sbDark text-white rounded-full flex items-center justify-center transition">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.9 2.5 12 2.5 12 2.5s-4.9 0-8.3.4c-.5.1-1.5.1-2.3 1-.7.7-.9 2.3-.9 2.3S0 8.1 0 10v1.9c0 1.9.3 3.8.3 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.8.4 8.3.4.5 0 4.9 0 8.3-.4.5-.1 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.3-1.9.3-3.8V10c0-1.9-.3-3.8-.3-3.8zM9.5 14V8l6.3 3-6.3 3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="TikTok" class="w-7 h-7 bg-gray-300 hover:bg-sbDark text-white rounded-full flex items-center justify-center transition">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.6 6.3a4.8 4.8 0 01-3.8-4.3V2H12v14.5a2.7 2.7 0 11-2.7-2.7c.3 0 .5 0 .8.1V10a6.6 6.6 0 00-.8-.1A6.6 6.6 0 1015.9 17V9.3a8.5 8.5 0 004.9 1.6V7a4.8 4.8 0 01-1.2-.7z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
